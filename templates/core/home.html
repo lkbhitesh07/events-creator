@@ -1,0 +1,26 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block extra_head %}
+<link rel="stylesheet" type="text/css" href="{% static 'styles/core/event_card.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container my-5">
+    <div class="row home">
+        <div class="col-12 col-md-8">
+
+            <!-- All the events in database -->
+            {% for event in all_events %}
+
+            <!-- Single Event Card -->
+            {% include 'core/event_card.html' %}
+
+            {% endfor %}
+            <!-- All the events in database -->
+
+        </div>
+    </div>
+</div>
+{% endblock %}

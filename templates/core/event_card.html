@@ -1,0 +1,32 @@
+<div class="card mx-auto mb-5" style="max-width: 32rem;">
+  <div class="card-body p-0">
+    <div class="post__card__text">
+
+      <!-- Event Image -->
+      <img src="{{ event.image.url }}" style="width: 100%;">
+
+        <h5 style="text-align: center; padding-top: 10px;">Topic - {{ event.event_name }}</h5>
+
+        <h5 style="text-align: center;">Date - {{ event.date }}</h5>
+
+        <h5 style="text-align: center;">Time - {{ event.time }}</h5>
+
+        <h5 style="text-align: center;">Location - {{ event.location }}</h5>
+
+        <!-- Like and Unlike Buttons Starts-->
+        {% if event.is_liked %}
+        <form method="POST" action="{% url 'event_unlike_view' event.pk %}">
+          {% csrf_token %}
+          <button class="btn p-0 m-0" type="submit"><span class="fas fa-heart" style="color: red;"></span></button>
+        </form>
+        {% else %}
+        <form method="POST" action="{% url 'event_like_view' event.pk %}">
+          {% csrf_token %}
+          <button class="btn p-0 m-0" type="submit"><span class="far fa-heart"></span></button>
+        </form>
+        {% endif %}
+        <!-- Like and Unlike Buttons End -->
+
+    </div>
+  </div>
+</div>
